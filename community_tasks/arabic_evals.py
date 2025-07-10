@@ -1020,7 +1020,7 @@ def process_judge_response(response) -> float:
 
 
 judge = JudgeLM(
-    model="Qwen/Qwen2.5-72B-Instruct",
+    model="/gcs/eval/qwenmodels/qwen/",
     templates=judge_template,
     process_judge_response=process_judge_response,
     judge_backend="vllm",
