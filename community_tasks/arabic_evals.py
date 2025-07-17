@@ -1026,7 +1026,7 @@ judge = JudgeLM(
     model="Qwen/Qwen2.5-72B-Instruct",
     templates=judge_template,
     process_judge_response=process_judge_response,
-    judge_backend="transformers",
+    judge_backend="vllm",
 )
 
 wrapped_judge = JudgeMetricWrapper(judge)
