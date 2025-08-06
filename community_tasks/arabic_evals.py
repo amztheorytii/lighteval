@@ -1023,7 +1023,7 @@ def process_judge_response(response) -> float:
 
 
 judge = JudgeLM(
-    model="/lustre1/tier2/projects/falcon-arabic/models/Qwen",
+    model="/gcs_arabic_ckpts/eval/qwenmodels/qwen",
     templates=judge_template,
     process_judge_response=process_judge_response,
     judge_backend="transformers",
