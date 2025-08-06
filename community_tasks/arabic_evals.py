@@ -1023,10 +1023,10 @@ def process_judge_response(response) -> float:
 
 
 judge = JudgeLM(
-    model="Qwen/Qwen2.5-72B-Instruct",
+    model="/lustre1/tier2/projects/falcon-arabic/models/Qwen",
     templates=judge_template,
     process_judge_response=process_judge_response,
-    judge_backend="vllm",
+    judge_backend="transformers",
 )
 
 wrapped_judge = JudgeMetricWrapper(judge)
