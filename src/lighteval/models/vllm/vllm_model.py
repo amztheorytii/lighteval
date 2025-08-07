@@ -44,7 +44,7 @@ from lighteval.tasks.requests import (
 )
 from lighteval.utils.imports import is_vllm_available
 from lighteval.utils.utils import as_list
-
+from vllm.config import SchedulerConfig
 
 logger = logging.getLogger(__name__)
 
@@ -187,6 +187,7 @@ class VLLMModel(LightevalModel):
             "seed": int(config.seed),
             "max_num_seqs": int(config.max_num_seqs),
             "max_num_batched_tokens": int(config.max_num_batched_tokens),
+            "enable_chunked_prefill": True
         }
 
         if config.quantization is not None:
