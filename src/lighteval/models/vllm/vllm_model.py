@@ -252,6 +252,7 @@ class VLLMModel(LightevalModel):
             "seed": int(config.seed),
             "max_num_seqs": int(config.max_num_seqs),
             "max_num_batched_tokens": int(config.max_num_batched_tokens),
+            "enable_chunked_prefill": True
         }
 
         if config.quantization is not None:
