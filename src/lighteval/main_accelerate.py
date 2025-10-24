@@ -51,6 +51,9 @@ def accelerate(  # noqa C901
     vision_model: Annotated[
         bool, Option(help="Use vision model for evaluation.", rich_help_panel=HELP_PANEL_NAME_4)
     ] = False,
+    disable_thinking: Annotated[
+        bool, Option(help="Allows you to disable thinking for model that support reasoning", rich_help_panel=HELP_PANEL_NAME_4)
+    ] = False,
     system_prompt: Annotated[
         Optional[str], Option(help="Use system prompt for evaluation.", rich_help_panel=HELP_PANEL_NAME_4)
     ] = None,
@@ -140,6 +143,7 @@ def accelerate(  # noqa C901
         use_chat_template=use_chat_template,
         system_prompt=system_prompt,
         load_responses_from_details_date_id=load_responses_from_details_date_id,
+        disable_thinking=disable_thinking
     )
 
     if model_args.endswith(".yaml"):

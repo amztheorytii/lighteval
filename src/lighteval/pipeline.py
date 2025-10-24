@@ -107,6 +107,7 @@ class PipelineParameters:
     system_prompt: str | None = None
     cot_prompt: str | None = None
     load_responses_from_details_date_id: str | None = None
+    disable_thinking: bool = False
 
     def __post_init__(self):  # noqa C901
         if self.launcher_type == ParallelismManager.ACCELERATE:
@@ -233,6 +234,7 @@ class Pipeline:
                 use_chat_template=self.pipeline_parameters.use_chat_template,
                 system_prompt=self.pipeline_parameters.system_prompt,
                 cot_prompt=self.pipeline_parameters.cot_prompt,
+                disable_thinking=self.pipeline_parameters.disable_thinking,
             )
 
             self.task_names_list = task_names_list

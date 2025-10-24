@@ -592,6 +592,7 @@ def create_requests_from_tasks(  # noqa: C901
     use_chat_template: bool,
     system_prompt: str | None,
     cot_prompt: str | None,
+    disable_thinking: bool = False,
 ) -> Tuple[dict[RequestType, list[Request]], dict[SampleUid, Doc]]:
     """
     Takes a task dict and a fewshot dict and returns a dict of requests, a dict
@@ -659,6 +660,7 @@ def create_requests_from_tasks(  # noqa: C901
                         use_chat_template=use_chat_template,
                         system_prompt=system_prompt,
                         cot_prompt=cot_prompt,
+                        disable_thinking=disable_thinking,
                     )
 
                     # Constructing the requests

@@ -108,6 +108,7 @@ class PromptManager:
         use_chat_template=False,
         system_prompt: str = None,
         cot_prompt: str = None,
+        disable_thinking: bool = False,
     ) -> Doc:
         is_multi_turn = doc.specific is not None and len(doc.specific.get("multi_turn_queries", [])) > 0
         if is_multi_turn:
@@ -123,6 +124,7 @@ class PromptManager:
                 use_chat_template=use_chat_template,
                 system_prompt=system_prompt,
                 cot_prompt=cot_prompt,
+                disable_thinking = disable_thinking,
             )
         doc.num_effective_few_shots = num_effective_few_shots
         doc.num_asked_few_shots = num_fewshot
@@ -178,6 +180,7 @@ class PromptManager:
         use_chat_template=False,
         system_prompt: str = None,
         cot_prompt: str = None,
+        disable_thinking: bool = False,
     ):
         """Returns a fewshot context string that is made up of a prepended description
         (if provided), the `num_fewshot` number of examples, and an appended prompt example.
@@ -249,8 +252,12 @@ class PromptManager:
             return output, num_effective_fewshots
 
         elif use_chat_template:
+            kwargs = {}
+            if disable_thinking:
+                kwargs["enable_thinking"] = False            
+                
             return self.model.tokenizer.apply_chat_template(
-                output, tokenize=False, add_generation_prompt=True
+                output, tokenize=False, add_generation_prompt=True, **kwargs
             ), num_effective_fewshots
 
         return output, num_effective_fewshots

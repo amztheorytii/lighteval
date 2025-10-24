@@ -50,6 +50,9 @@ def vllm(
     cot_prompt: Annotated[
         Optional[str], Option(help="Use chain of thought prompt for evaluation.", rich_help_panel=HELP_PANEL_NAME_4)
     ] = None,
+    disable_thinking: Annotated[
+        bool, Option(help="Allows you to disable thinking for model that support reasoning", rich_help_panel=HELP_PANEL_NAME_4)
+    ] = False,
     dataset_loading_processes: Annotated[
         int, Option(help="Number of processes to use for dataset loading.", rich_help_panel=HELP_PANEL_NAME_1)
     ] = 1,
@@ -134,6 +137,7 @@ def vllm(
         system_prompt=system_prompt,
         cot_prompt=cot_prompt,
         load_responses_from_details_date_id=load_responses_from_details_date_id,
+        disable_thinking=disable_thinking,
     )
 
     if model_args.endswith(".yaml"):
