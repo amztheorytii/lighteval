@@ -1,1 +1,2 @@
+community|alsharh_emirati_bench|0|0
 community|silbar_emirati_bench|0|0
